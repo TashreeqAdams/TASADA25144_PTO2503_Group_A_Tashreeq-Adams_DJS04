@@ -10,7 +10,10 @@ import { genres } from "../data";
 export default function Filter() {
   return (
     <div>
-      <select>
+      <select defaultValue="">
+        <option value="" disabled>
+          Select genre
+        </option>
         {genres.map((genre) => (
           <option key={genre.id}>{genre.title}</option>
         ))}
