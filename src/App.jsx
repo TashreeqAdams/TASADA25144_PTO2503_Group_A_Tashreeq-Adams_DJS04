@@ -4,6 +4,7 @@ import { genres } from "./data";
 import { fetchPodcasts } from "./api/fetchPodcasts";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
+import Filter from "./components/Filter";
 
 /**
  * App - The root component of the Podcast Explorer application. It handles:
@@ -26,6 +27,7 @@ export default function App() {
     <>
       <Header />
       <SearchBar />
+      <Filter />
       <main>
         {loading && (
           <div className="message-container">
