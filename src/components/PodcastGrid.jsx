@@ -1,4 +1,5 @@
 import PodcastCard from "./PodcastCard";
+import SearchBar from "./SearchBar";
 
 /**
  * Displays a grid layout of podcast preview cards. Each card includes
@@ -11,12 +12,18 @@ import PodcastCard from "./PodcastCard";
  * @returns {JSX.Element} The rendered grid of podcast cards.
  *
  */
-export default function PodcastGrid({ podcasts, genres }) {
+export default function PodcastGrid({ podcasts, genres, search }) {
   return (
     <div className="grid">
-      {podcasts.map((podcast) => (
-        <PodcastCard key={podcast.id} podcast={podcast} genres={genres} />
-      ))}
+      {podcasts
+        .filter((podcast) => {
+          return search.toLowerCase() === ""
+            ? podcast
+            : podcast.title.toLowerCase().includes(search);
+        })
+        .map((podcast) => (
+          <PodcastCard key={podcast.id} podcast={podcast} genres={genres} />
+        ))}
     </div>
   );
 }

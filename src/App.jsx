@@ -18,6 +18,7 @@ export default function App() {
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetchPodcasts(setPodcasts, setError, setLoading);
@@ -26,7 +27,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <SearchBar />
+      <SearchBar search={search} setSearch={setSearch} />
       <Filter />
       <main>
         {loading && (
@@ -45,7 +46,7 @@ export default function App() {
         )}
 
         {!loading && !error && (
-          <PodcastGrid podcasts={podcasts} genres={genres} />
+          <PodcastGrid podcasts={podcasts} genres={genres} search={search} />
         )}
       </main>
     </>
