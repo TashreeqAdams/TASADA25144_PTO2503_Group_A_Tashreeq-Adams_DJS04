@@ -12,12 +12,13 @@ import SearchBar from "./SearchBar";
  * @returns {JSX.Element} The rendered grid of podcast cards.
  *
  */
-export default function PodcastGrid({ podcasts, genres, search, pageNumber }) {
-  const usersPerPage = 10;
-  const pagesVisited = pageNumber * usersPerPage;
-
-  const pageCount = Math.ceil(podcasts.length / usersPerPage);
-
+export default function PodcastGrid({
+  podcasts,
+  genres,
+  search,
+  pagesVisited,
+  usersPerPage,
+}) {
   return (
     <div className="grid">
       {podcasts
@@ -26,10 +27,10 @@ export default function PodcastGrid({ podcasts, genres, search, pageNumber }) {
             ? podcast
             : podcast.title.toLowerCase().includes(search);
         })
+        .slice(pagesVisited, pagesVisited + usersPerPage)
         .map((podcast) => (
           <PodcastCard key={podcast.id} podcast={podcast} genres={genres} />
-        ))
-        .slice(pagesVisited, pagesVisited + usersPerPage)}
+        ))}
     </div>
   );
 }

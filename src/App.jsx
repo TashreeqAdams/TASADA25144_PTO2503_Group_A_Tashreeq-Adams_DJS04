@@ -63,6 +63,8 @@ export default function App() {
             search={search}
             pageNumber={pageNumber}
             pageCount={pageCount}
+            pagesVisited={pagesVisited}
+            usersPerPage={usersPerPage}
           />
         )}
         <ReactPaginate
@@ -70,6 +72,11 @@ export default function App() {
           nextLabel={"Next"}
           pageCount={pageCount}
           onPageChange={changePage}
+          containerClassName={"paginationBttns"}
+          previousLinkClassName={"previousBttn"}
+          nextLinkClassName={"nextBttn"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
         />
       </main>
     </>
