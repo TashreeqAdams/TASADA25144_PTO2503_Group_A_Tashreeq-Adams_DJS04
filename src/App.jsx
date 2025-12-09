@@ -20,6 +20,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
     fetchPodcasts(setPodcasts, setError, setLoading);
@@ -47,7 +48,12 @@ export default function App() {
         )}
 
         {!loading && !error && (
-          <PodcastGrid podcasts={podcasts} genres={genres} search={search} />
+          <PodcastGrid
+            podcasts={podcasts}
+            genres={genres}
+            search={search}
+            pageNumber={pageNumber}
+          />
         )}
       </main>
     </>
