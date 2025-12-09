@@ -16,6 +16,8 @@ export default function PodcastGrid({ podcasts, genres, search, pageNumber }) {
   const usersPerPage = 10;
   const pagesVisited = pageNumber * usersPerPage;
 
+  const pageCount = Math.ceil(podcasts.length / usersPerPage);
+
   return (
     <div className="grid">
       {podcasts

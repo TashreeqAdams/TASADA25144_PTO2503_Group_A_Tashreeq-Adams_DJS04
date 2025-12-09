@@ -22,6 +22,15 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
+  const usersPerPage = 15;
+  const pagesVisited = pageNumber * usersPerPage;
+
+  const pageCount = Math.ceil(podcasts.length / usersPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
   useEffect(() => {
     fetchPodcasts(setPodcasts, setError, setLoading);
   }, []);
@@ -53,8 +62,15 @@ export default function App() {
             genres={genres}
             search={search}
             pageNumber={pageNumber}
+            pageCount={pageCount}
           />
         )}
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+        />
       </main>
     </>
   );
