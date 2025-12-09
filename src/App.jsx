@@ -5,6 +5,7 @@ import { fetchPodcasts } from "./api/fetchPodcasts";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import Filter from "./components/Filter";
+import ReactPaginate from "react-paginate";
 
 /**
  * App - The root component of the Podcast Explorer application. It handles:
