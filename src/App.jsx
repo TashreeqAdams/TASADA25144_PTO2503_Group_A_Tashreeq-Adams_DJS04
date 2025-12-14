@@ -25,12 +25,8 @@ export default function App() {
   const [genre, setGenre] = useState("");
   const [sort, setSort] = useState("");
 
-  console.log("App state - genre:", genre);
-
   const usersPerPage = 10;
   const pagesVisited = pageNumber * usersPerPage;
-
-  const pageCount = Math.ceil(podcasts.length / usersPerPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -40,12 +36,27 @@ export default function App() {
     fetchPodcasts(setPodcasts, setError, setLoading);
   }, []);
 
+  // Calculate the total number of pages **after filtering**
+  const filteredPodcasts = podcasts
+    .filter((p) =>
+      genre === "" || genre === "all" ? true : p.genres.includes(Number(genre))
+    )
+    .filter((p) =>
+      search === ""
+        ? true
+        : p.title.toLowerCase().includes(search.toLowerCase())
+    );
+
+  const pageCount = Math.ceil(filteredPodcasts.length / usersPerPage);
+
   return (
     <>
       <Header />
-      <SearchBar search={search} setSearch={setSearch} />
-      <Filter genre={genre} setGenre={setGenre} />
-      <Sort sort={sort} setSort={setSort} />
+      <div className="controls">
+        <SearchBar search={search} setSearch={setSearch} />
+        <Filter genre={genre} setGenre={setGenre} />
+        <Sort sort={sort} setSort={setSort} />
+      </div>
       <main>
         {loading && (
           <div className="message-container">

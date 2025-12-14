@@ -1,63 +1,26 @@
-# DJS03 React Podcast Preview
+# DSJ04 React Podcast App: Search, Sort, Filter, and Pagination
 
-This project is a **React-based podcast preview application** that fetches podcast data from an external API and displays it in a responsive grid of cards. It builds upon the concepts introduced in DJS01 and DJS02 but replaces vanilla JavaScript and Web Components with a modular React architecture.
-
----
-
-## Features
-
-- Fetches podcast data from a remote API: `https://podcast-api.netlify.app/shows`
-- Displays a responsive grid of podcast cards using React components
-- Maps genre IDs to titles using static data from `data.js`
-- Shows last updated date in a localized, human-readable format
-- Displays a spinner during loading and an error message on failure
-- Clean, reusable component structure
+This project focuses on building a dynamic podcast browsing experience using React. Users can search, sort, filter, and paginate a list of podcast shows in real time. The app maintains seamless state synchronization across all controls, providing a responsive and intuitive interface. This project demonstrates advanced React skills, state management, modular component design, and building scalable front-end applications.
 
 ---
 
-## Project Structure
+## Technologies Used
 
-```
-/src
-│
-├── /api
-│ └── fetchPodcasts.js # Function to fetch podcast data from the API
-│
-├── /components
-│ ├── Header.jsx # Top navigation/header component
-│ ├── PodcastCard.jsx # Component to display individual podcast info
-│ └── PodcastGrid.jsx # Component to render a grid of PodcastCards
-│
-├── /utils
-│ └── formatDate.js # Utility to format ISO dates into readable text
-│
-├── App.jsx # Root component for state and layout
-├── data.js # Static mapping of genre IDs to titles
-├── index.css # Application-wide CSS including layout and tags
-├── main.jsx # Vite entry point
-```
+- React (Functional Components, Hooks, Context API)
+- JavaScript (ES6+)
+- CSS / Styled Components
+- GitHub
 
 ---
 
-## How it Works
+## Features Created
 
-- **Data Fetching**: `fetchPodcasts.js` handles the API call and manages success, loading, and error states.
-- **Genre Resolution**: Genre IDs returned by the API are mapped to readable names using `data.js`.
-- **UI Rendering**:
-  - `PodcastGrid.jsx` loops over all podcast data and renders `PodcastCard` components.
-  - `PodcastCard.jsx` displays title, image, season count, genre tags, and the last update date.
-- **Styling**: Tags, error messages, and loading spinners are styled with plain CSS in `index.css`.
+The project includes:
 
----
-
-## Learning Goals
-
-- Learn how to structure a React project using functional components
-- Understand how to fetch and display remote data in React
-- Apply conditional rendering for loading and error states
-- Use utility modules and static data in a real-world project
-
----
+- Dynamic search that matches any part of a podcast title and integrates with filters, sorts, and pagination.
+- Sorting options for podcasts by Newest First, Title A–Z, and Title Z–A.
+- Genre-based filtering via dropdown or multi-select, maintained alongside search, sort, and pagination.
+- Pagination to display podcasts in manageable chunks while respecting the current search, filter, and sort state.
 
 ## How to Run
 
@@ -75,3 +38,4 @@ This project is a **React-based podcast preview application** that fetches podca
    ```
 
 4. Open http://localhost:5173 in your browser to view the app.
+5. Use the search, sort, filter, and pagination controls to explore podcasts.

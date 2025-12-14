@@ -99,6 +99,28 @@ body {
   margin-top: 10%;
 }
 
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.controls select,
+.controls input[type="text"] {
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  color: #333;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  min-width: 180px;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -111,6 +133,7 @@ body {
   width: 100%;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 6px;
@@ -166,4 +189,10 @@ body {
   cursor: not-allowed;
   pointer-events: none;
   box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+  }
 }
