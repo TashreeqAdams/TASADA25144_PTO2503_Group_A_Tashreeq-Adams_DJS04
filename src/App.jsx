@@ -22,7 +22,7 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
-  const usersPerPage = 15;
+  const usersPerPage = 10;
   const pagesVisited = pageNumber * usersPerPage;
 
   const pageCount = Math.ceil(podcasts.length / usersPerPage);
