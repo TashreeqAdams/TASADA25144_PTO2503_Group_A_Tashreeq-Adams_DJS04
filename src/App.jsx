@@ -23,6 +23,7 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [genre, setGenre] = useState("");
+  const [sort, setSort] = useState("");
 
   console.log("App state - genre:", genre);
 
@@ -44,7 +45,7 @@ export default function App() {
       <Header />
       <SearchBar search={search} setSearch={setSearch} />
       <Filter genre={genre} setGenre={setGenre} />
-      <Sort />
+      <Sort sort={sort} setSort={setSort} />
       <main>
         {loading && (
           <div className="message-container">
@@ -71,6 +72,7 @@ export default function App() {
             pagesVisited={pagesVisited}
             usersPerPage={usersPerPage}
             genre={genre}
+            sort={sort}
           />
         )}
         <ReactPaginate
