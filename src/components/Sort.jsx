@@ -1,3 +1,10 @@
+/**
+ *
+ * Sorting options for podcasts by Newest First, Title A–Z, and Title Z–A
+ *
+ * @returns {JSX.Element} The sort filter
+ */
+
 export default function Sort({ sort, setSort }) {
   return (
     <div>
