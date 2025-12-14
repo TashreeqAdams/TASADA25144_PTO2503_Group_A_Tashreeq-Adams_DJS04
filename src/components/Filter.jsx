@@ -7,15 +7,19 @@ import { genres } from "../data";
  * @returns {JSX.Element} The genre filter
  */
 
-export default function Filter() {
+export default function Filter({ genre, setGenre }) {
   return (
     <div>
-      <select defaultValue="">
+      <select value={genre} onChange={(e) => setGenre(e.target.value)}>
         <option value="" disabled>
           Select genre
         </option>
-        {genres.map((genre) => (
-          <option key={genre.id}>{genre.title}</option>
+        <option value="all">All genres</option>
+
+        {genres.map((g) => (
+          <option key={g.id} value={g.id}>
+            {g.title}
+          </option>
         ))}
       </select>
     </div>

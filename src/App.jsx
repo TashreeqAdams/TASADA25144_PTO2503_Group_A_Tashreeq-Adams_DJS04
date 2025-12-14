@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import Filter from "./components/Filter";
 import ReactPaginate from "react-paginate";
+import Sort from "./components/Sort";
 
 /**
  * App - The root component of the Podcast Explorer application. It handles:
@@ -21,6 +22,9 @@ export default function App() {
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
+  const [genre, setGenre] = useState("");
+
+  console.log("App state - genre:", genre);
 
   const usersPerPage = 10;
   const pagesVisited = pageNumber * usersPerPage;
@@ -39,7 +43,8 @@ export default function App() {
     <>
       <Header />
       <SearchBar search={search} setSearch={setSearch} />
-      <Filter />
+      <Filter genre={genre} setGenre={setGenre} />
+      <Sort />
       <main>
         {loading && (
           <div className="message-container">
@@ -65,6 +70,7 @@ export default function App() {
             pageCount={pageCount}
             pagesVisited={pagesVisited}
             usersPerPage={usersPerPage}
+            genre={genre}
           />
         )}
         <ReactPaginate

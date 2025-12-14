@@ -1,5 +1,6 @@
 import PodcastCard from "./PodcastCard";
 import SearchBar from "./SearchBar";
+import Filter from "./Filter";
 
 /**
  * Displays a grid layout of podcast preview cards. Each card includes
@@ -18,19 +19,29 @@ export default function PodcastGrid({
   search,
   pagesVisited,
   usersPerPage,
+  genre,
 }) {
+  const filteredPodcasts = podcasts
+    .filter((p) =>
+      genre === "" || genre === "all" ? true : p.genres.includes(Number(genre))
+    )
+    .filter((p) =>
+      search === ""
+        ? true
+        : p.title.toLowerCase().includes(search.toLowerCase())
+    )
+    .slice(pagesVisited, pagesVisited + usersPerPage);
+
   return (
     <div className="grid">
-      {podcasts
-        .filter((podcast) => {
-          return search.toLowerCase() === ""
-            ? podcast
-            : podcast.title.toLowerCase().includes(search);
-        })
-        .slice(pagesVisited, pagesVisited + usersPerPage)
-        .map((podcast) => (
-          <PodcastCard key={podcast.id} podcast={podcast} genres={genres} />
-        ))}
+      {filteredPodcasts.map((podcast) => (
+        <PodcastCard
+          key={podcast.id}
+          podcast={podcast}
+          genres={genres}
+          genre={genre}
+        />
+      ))}
     </div>
   );
 }
